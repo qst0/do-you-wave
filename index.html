@@ -25,6 +25,12 @@
 			this.retorts = retorts;
 			this.recoverable = recoverable;
 		}
+		
+		renew () {
+			this.asked = false;
+			this.waved = false;
+			this.cur = 0;
+		}
 	}
 	
 	senario = [new Senario("Ask",["A 1", "A 2", "A 3"],
@@ -73,6 +79,11 @@
 			{
 				console.log("Waved at ask in cur_senario: " + cur_senario);
 				console.log("act " + senario[cur_senario].cur);
+				if (senario[cur_senario].waved == false)
+				{
+					console.log("resetting the cur, we hadn't waved.");
+					senario[cur_senario].cur = 0;
+				}
 				senario[cur_senario].waved = true;	
 				if (senario[cur_senario].cur < senario[cur_senario].answers.length)
 				{
@@ -84,6 +95,7 @@
 				{
 					//End of answers
 					console.log("Asking a new senario at end of answers");
+					senario[cur_senario].renew();	
 					cur_senario++;
 					if (cur_senario < senario_count)
 					{
@@ -151,13 +163,34 @@
 			}
 			else
 			{
-				console.log("We didn't wave at an ask!");
-	
+				console.log("We didn't wave at an ask, retort!");	
+				if (senario[cur_senario].cur < senario[cur_senario].retorts.length)
+				{
+					$("h1").text(senario[cur_senario].retorts[senario[cur_senario].cur]);
+					senario[cur_senario].cur++;
+				}
+				else
+				{	
+					console.log("We hit the end of the retorts, new senario");
+					senario[cur_senario].renew();	
+					cur_senario++;
+					if (cur_senario < senario_count)
+					{
+						$("h1").text(senario[cur_senario].ask);
+						senario[cur_senario].asked = true;
+					}
+					else
+					{
+						console.log("nothing to do? out of retorts and senarios?");
+					}
+				}
 			}
 		}
 		else
 		{
-			console.log("Out of senario_count's range?");	
+			console.log("Out of senario_count's range?");
+			
+			console.log("restart the game");
 		}
 		time_not_waving = 0;
 	}
