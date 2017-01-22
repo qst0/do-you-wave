@@ -20,6 +20,7 @@ setInterval(function() {
 		time_not_waving++;
 		if (time_not_waving > 4)
 		{
+		$("div").hide();
 		console.log("Waited, no_wave");
 		waits++;
 		no_wave();
@@ -27,6 +28,7 @@ setInterval(function() {
 		}, interval_delay);
 
 function wave() {
+	$("div").show();
 	if (waves == 0)
 	{
 		console.log("starting game");
