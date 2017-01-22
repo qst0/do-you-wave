@@ -42,6 +42,8 @@ function wave() {
 			console.log("act " + senario[cur_senario].cur);
 			if (senario[cur_senario].waved == false)
 			{
+				console.log("cur_s cur: " + senario[cur_senario].cur);
+				console.log("recoverable till: " + senario[cur_senario].recoverable);
 				if (senario[cur_senario].cur < senario[cur_senario].recoverable)
 				{
 					console.log("resetting the cur, we hadn't waved.");
