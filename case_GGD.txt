@@ -1,0 +1,45 @@
+b-You see a group of friends eating dinner.
+	r-Why not wave at your family...
+	r-your parents give you a weird look...
+		e-ou are clearly a terrible child
+
+b-your at the bar and see bartender at the bar and need your check.
+	r-are you afraid of the guy/girl?
+	r-what are you gonna just leave you card here?
+		e- welp guess your waiting..... baby
+
+b-You are at a sports game and see the wave coming towards you.
+	r-you can still make it
+		e-missed it guy turns around and gives you a weird look
+
+b-You see team Dick moon in the bathroom.
+	r-wow i heard they are nice....
+	r-damn you sure? They look so friendly!
+		e-Your ruining the vibe man
+
+b-Your dog waves at you.
+	r-What do you mean your dogs waving... wave dude
+	r-This is a once in a lifetime oppurtunity
+		e-can't beleive you missed that...
+
+b-You come across an old mans bean stand in the woods.
+	r- seems pretty interesting
+	r- they could be magic beans
+		e- what if they made you magic....
+
+b-You see your exes dad at the strip club.
+	r- oh this could be good you sure?
+	r- imagine how great this converstion could be.
+		e- what ever your decisions...
+
+b-You see a dark ominous creature in the distance.
+	r- He could have the answers...
+	r- He does have the answers...
+	r- Do you not want the answer?
+		e- You will never know the answer
+
+b-You see your freind crack house.
+	r- Probably see what hes doin right...
+	r- You should probably go in there...
+	r- It seems like a good time
+		e- I still think you shoulda went in...
