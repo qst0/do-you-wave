@@ -15,6 +15,18 @@
 
 	-->
 	<script>
+
+	class Senario {
+		constructor (ask, answers, retorts, recoverable) {
+			this.ask = ask;
+			this.answers = answers;
+			this.retorts = retorts;
+			this.recoverable = recoverable;	
+		}
+	}
+
+	test = new Senario("What's up",["Some answers"],["Some retorts"],0);
+	
 	i = 0;
 	tutorial_on = true;
 	level = 0;
@@ -63,11 +75,14 @@
 	}
 
 	function wave() {
+		$("h1").text(test.answers[0]);
+	/*
 		if (tutorial_on)
 			$("h1").text(tutorial[i % tutorial.length]);
 		if (level == 1)
 			$("h1").text(questions[i % questions.length]);
 		wave_noise.play();
+	*/	
 		time_not_waving = 0;
 		i++;	
 	}
