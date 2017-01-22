@@ -1,12 +1,12 @@
 b-You see a group of friends eating dinner.
 	r-Why not wave at your family...
 	r-your parents give you a weird look...
-		e-ou are clearly a terrible child
+		e-You are clearly a terrible child
 
 b-your at the bar and see bartender at the bar and need your check.
 	r-are you afraid of the guy/girl?
 	r-what are you gonna just leave you card here?
-		e- welp guess your waiting..... baby
+		e- welp guess your waiting.....
 
 b-You are at a sports game and see the wave coming towards you.
 	r-you can still make it
