@@ -45,9 +45,9 @@
 	var cur_senario = 0;
 
 	setInterval(function() {
-//		console.log("not_waving: " + time_not_waving +
-//				"\nwaves: " + waves + 
-//				"\nwaits: " + waits);	
+		console.log("not_waving: " + time_not_waving);
+		console.log("waves: " + waves);
+		console.log("waits: " + waits);	
 		time_not_waving++;
 		if (time_not_waving > 4)
 		{
@@ -129,13 +129,30 @@
 			if (senario[cur_senario].waved == true)
 			{
 				if (senario[cur_senario].cur < senario[cur_senario].answers.length)
+				{
 					console.log("moving forward the answer, already waved");
+					$("h1").text(senario[cur_senario].answers[senario[cur_senario].cur]);
+					senario[cur_senario].cur++;
+				}
 				else
-					console.log("We hit the end of the answers, and we didn't wave");
+				{
+					console.log("We hit the end of the answers, new senario");
+					cur_senario++;
+					if (cur_senario < senario_count)
+					{
+						$("h1").text(senario[cur_senario].ask);
+						senario[cur_senario].asked = true;
+					}
+					else
+					{
+						console.log("nothing to do? no wave?");
+					}
+				}
 			}
 			else
 			{
 				console.log("We didn't wave at an ask!");
+	
 			}
 		}
 		else
@@ -146,8 +163,11 @@
 	}
 
 	$(document).ready(function(){
-		$("body").keypress(function(){
-			wave();	
+		$("body").keypress(function(e){
+			if (e.keyCode == 32)
+				wave();	
+			else	
+				console.log(e.keyCode);
 		});
 	});
 	</script>
