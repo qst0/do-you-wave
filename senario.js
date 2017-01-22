@@ -38,7 +38,7 @@ senario = [
 			"You leave a tip of course."],
 			["Don't be afraid of them. Wave.",
 			"Are you gonna just leave you card here then?",
-			"They get to you after a long while waiting.
+			"They get to you after a long while waiting.",
 			"Wave next time."],
 			2),
 		new Senario("Catch your reflection in the mirror, do you wave?",
