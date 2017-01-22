@@ -24,7 +24,7 @@ senario = [
 			["You should wave to them!","It's them for sure.",
 			"They come up to you and ask why you didn't wave."],
 			2),
-		new Senario("You your Family eating dinner, do you wave?",
+		new Senario("You see your Family eating dinner, do you wave?",
 			["They are so happy to see you!"],
 			["Why not wave at your family...",
 			"your parents give you a weird look...",
