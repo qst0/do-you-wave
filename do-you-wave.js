@@ -1,35 +1,5 @@
 var game_started = false;
 var tutorial_played = false;
-
-/*
-
-class Senario {
-	constructor (ask, answers, retorts, recoverable) {
-		this.waved = false;	
-		this.asked = false;
-		this.cur = 0;
-		this.ask = ask;
-		this.answers = answers;
-		this.retorts = retorts;
-		this.recoverable = recoverable;
-	}
-
-	renew () {
-		this.asked = false;
-		this.waved = false;
-		this.cur = 0;
-	}
-}
-
-senario = [new Senario("Ask",["A 1", "A 2", "A 3"],
-		["R 1", "R 2", "R 3"],0),
-	new Senario("You think you see your friend, do you wave?",
-			["They see you and you both enjoy a wave."],
-			["You should wave to them!","It's them for sure.",
-			"They come up to you and ask why you didn't wave."],
-			2)];
-*/
-
 var wave_noise = new Audio('foo.wav');
 var wait_noise = new Audio('bar.wav');
 var interval_delay = 1000;
@@ -59,7 +29,6 @@ setInterval(function() {
 function wave() {
 	if (waves == 0)
 	{
-		//Starting phase
 		console.log("starting game");
 		$("h1").text(senario[0].ask);
 		senario[0].asked = true;
@@ -67,15 +36,21 @@ function wave() {
 	else if(cur_senario < senario_count)
 	{
 		console.log("Game Phase");
-		//Game phase
 		if(senario[cur_senario].asked)
 		{
 			console.log("Waved at ask in cur_senario: " + cur_senario);
 			console.log("act " + senario[cur_senario].cur);
 			if (senario[cur_senario].waved == false)
 			{
-				console.log("resetting the cur, we hadn't waved.");
-				senario[cur_senario].cur = 0;
+				if (senario[cur_senario].cur < senario[cur_senario].recoverable)
+				{
+					console.log("resetting the cur, we hadn't waved.");
+					senario[cur_senario].cur = 0;
+				}
+				else
+				{
+					console.log("Nope, you didn't wave in time");
+				}
 			}
 			senario[cur_senario].waved = true;	
 			if (senario[cur_senario].cur < senario[cur_senario].answers.length)
@@ -86,7 +61,6 @@ function wave() {
 			}
 			else
 			{
-				//End of answers
 				console.log("Asking a new senario at end of answers");
 				senario[cur_senario].renew();	
 				cur_senario++;
@@ -100,6 +74,11 @@ function wave() {
 					console.log("nothing to do?");
 				}
 			}
+		}
+		else if (senario[cur_senario].failed)
+		{
+			console.log("Senario already failed. doing nothing");	
+			$("h1").text("Now it's too late to wave...");
 		}
 		else
 		{	
@@ -156,9 +135,10 @@ function no_wave() {
 		}
 		else
 		{
-			console.log("We didn't wave at an ask, retort!");	
+			console.log("We didn't wave at an ask, retort!");
 			if (senario[cur_senario].cur < senario[cur_senario].retorts.length)
 			{
+				senario[cur_senario].failed = true;
 				$("h1").text(senario[cur_senario].retorts[senario[cur_senario].cur]);
 				senario[cur_senario].cur++;
 			}
@@ -178,7 +158,6 @@ function no_wave() {
 				cur_senario = 0;
 				$("h1").text(senario[cur_senario].ask);
 				senario[cur_senario].asked = true;
-
 			}
 		}
 	}
