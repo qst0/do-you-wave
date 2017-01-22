@@ -1,7 +1,7 @@
 # do-you-wave
 You see the do you wave code. Do you wave?
 
-Outline:
+## Outline
 
 After a short tutorial on how to play prompt the player.
 
@@ -21,25 +21,29 @@ If the player stops waving long enough they miss their chance to recover.
 
 The program will be confused and restart after waving practice.
 
-Structure:
+## Structure
 
 A senario has a `prompt`, `answers` and `retorts`.
 
 It also holds a number value `recoverable` which is the index up to and including when the player can still wave and answer the senario.
 
-Example:
+### Example
 
-  "You see your friend, do you wave?"
+Prompt: `You see your friend, do you wave?`
   
-  Answers
-    They smile and you enjoy a friendly wave.
-    You talk about the importance of waving these days.
+Answers:
+
+* They smile and you enjoy a friendly wave.
+* You talk about the importance of waving these days.
   
-  Retorts
-    Why are you not waving? It's your friend!
-    You can really tell it them. They look confused that you're not waving.
-    They come give you a disappointed talk about the importance of waving in friendship
+Retorts:
+    
+* Why are you not waving? It's your friend!
+* You can really tell it them. They look confused that you're not waving.
+* They come give you a disappointed talk about the importance of waving in friendship
+
+Recoverable:
   
-  Recoverable : 2
+  The value for `recoverable` would be `2`, since the first two retorts are a chance to recover.
   
   
