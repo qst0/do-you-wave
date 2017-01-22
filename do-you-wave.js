@@ -44,7 +44,7 @@ function wave() {
 			{
 				console.log("cur_s cur: " + senario[cur_senario].cur);
 				console.log("recoverable till: " + senario[cur_senario].recoverable);
-				if (senario[cur_senario].cur < senario[cur_senario].recoverable)
+				if (senario[cur_senario].cur <= senario[cur_senario].recoverable)
 				{
 					console.log("resetting the cur, we hadn't waved.");
 					senario[cur_senario].cur = 0;
@@ -52,9 +52,10 @@ function wave() {
 				else
 				{
 					console.log("Nope, you didn't wave in time");
+					return;
 				}
 			}
-			senario[cur_senario].waved = true;	
+			senario[cur_senario].waved = true;
 			if (senario[cur_senario].cur < senario[cur_senario].answers.length)
 			{
 				console.log("answering");
@@ -64,7 +65,7 @@ function wave() {
 			else
 			{
 				console.log("Asking a new senario at end of answers");
-				senario[cur_senario].renew();	
+				senario[cur_senario].renew();
 				cur_senario++;
 				if (cur_senario < senario_count)
 				{
@@ -79,21 +80,21 @@ function wave() {
 		}
 		else if (senario[cur_senario].failed)
 		{
-			console.log("Senario already failed. doing nothing");	
+			console.log("Senario already failed. doing nothing");
 			$("h1").text("Now it's too late to wave...");
 		}
 		else
-		{	
+		{
 			console.log("Asking a new senario");
 			$("h1").text(senario[cur_senario].ask);
-			senario[cur_senario].asked = true;	
+			senario[cur_senario].asked = true;
 		}
 	}
 	else
 	{
-		$("h1").text("The end, you waved " + waves + " times.");	
+		$("h1").text("The end, you waved " + waves + " times.");
 	}
-	waves++;	
+	waves++;
 	time_not_waving = 0;
 }
 
@@ -145,7 +146,7 @@ function no_wave() {
 				senario[cur_senario].cur++;
 			}
 			else
-			{	
+			{
 				console.log("We hit the end of the retorts, reset the game");
 				if (waves > cur_senario + 1)
 				{
@@ -154,9 +155,9 @@ function no_wave() {
 				}
 				else
 				{
-					$("h1").text("The key to waving, is spacebar.");	
+					$("h1").text("The key to waving, is spacebar.");
 				}
-				senario[cur_senario].renew();	
+				senario[cur_senario].renew();
 				cur_senario = 0;
 				$("h1").text(senario[cur_senario].ask);
 				senario[cur_senario].asked = true;
@@ -165,7 +166,7 @@ function no_wave() {
 	}
 	else
 	{
-		console.log("Out of senario_count's range?");	
+		console.log("Out of senario_count's range?");
 		console.log("restart the game");
 		cur_senario = 0;
 		waves = 0;
@@ -176,8 +177,8 @@ function no_wave() {
 $(document).ready(function(){
 		$("body").keypress(function(e){
 				if (e.keyCode == 32)
-				wave();	
-				else	
+				wave();
+				else
 				console.log(e.keyCode);
 				});
 		});

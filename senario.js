@@ -18,8 +18,7 @@ class Senario {
 	}
 }
 
-senario = [new Senario("Ask",["A 1", "A 2", "A 3"],
-		["R 1", "R 2", "R 3"],0),
+senario = [
 		new Senario("You think you see your friend, do you wave?",
 			["They see you and you both enjoy a wave."],
 			["You should wave to them!","It's them for sure.",
