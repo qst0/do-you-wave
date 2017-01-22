@@ -1,82 +1,81 @@
 <html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-</script>
-<style>
-body {
-padding-top: 20%;
-margin: 0 auto;
-text-align: center;
-}
-</style>
-<body>
-<h1 id="main">Press Spacebar to start!</h1>
-</body>
-<!--
-
--->
-<script>
-i = 0;
-tutorial_on = true;
-level = 0;
-time_not_waving = 0;
-var wave_noise = new Audio('foo.wav');
-var wait_noise = new Audio('bar.wav');
-levels = [["You seem to be tired of waving or something.",
-		"Sorry to hear about that"],
-	["This is set two"]];
-questions = ["Wave in your first question.",
-		"You think you see your friend, would you wave?",
-		"He sees you and you both enjoy a wave"];
-tutorial = ["Welcome to \"Do you wave?\"",
-		"Just press the space bar to wave",
-		"If you don't want to wave.",
-		"Don't press the space bar",
-		"Yeah, that's waving, try not waving.",
-		"Sure, except don't press the space bar.",
-		"I still consider that waving.",
-		"If you would like to restart the tutorial, wave."];
-
-interval_delay = 1000;
-
-setInterval(function() {
-	time_not_waving++;
-	if (time_not_waving > 5)
-		no_wave();
-}, interval_delay);
-
-function no_wave() {
-	if (i > 1 && tutorial_on)
-	{
-		tutorial_on = false;
-		i = 0;
-		level = 1;
-		set = 1;
-		wave();
-		wait_noise.play();
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+	</script>
+	<style>
+	body {
+	padding-top: 20%;
+	margin: 0 auto;
+	text-align: center;
 	}
-	if (!tutorial_on)
-	{
-		i = 0;
-		set = 0;
-		$("h1").text(levels[set][i % levels[set].length]);	
-	}
-}
+	</style>
+	<body>
+	<h1 id="main">Press Spacebar to start!</h1>
+	</body>
+	<!--
 
-function wave() {
-	if (tutorial_on)
-		$("h1").text(tutorial[i % tutorial.length]);
-	if (level == 1)
-		$("h1").text(questions[i % questions.length]);
-	wave_noise.play();
+	-->
+	<script>
+	i = 0;
+	tutorial_on = true;
+	level = 0;
 	time_not_waving = 0;
-	i++;	
-}
+	var wave_noise = new Audio('foo.wav');
+	var wait_noise = new Audio('bar.wav');
+	levels = [["You seem to be tired of waving or something.",
+			"Sorry to hear about that"],
+		["This is set two"]];
+	questions = ["Wave in your first question.",
+			"You think you see your friend, would you wave?",
+			"He sees you and you both enjoy a wave"];
+	tutorial = ["Welcome to \"Do you wave?\"",
+			"Just press the space bar to wave",
+			"If you don't want to wave.",
+			"Don't press the space bar",
+			"Yeah, that's waving, try not waving.",
+			"Sure, except don't press the space bar.",
+			"I still consider that waving.",
+			"If you would like to restart the tutorial, wave."];
 
-$(document).ready(function(){
-	$("body").keypress(function(){
-		wave();	
+	interval_delay = 1000;
+
+	setInterval(function() {
+		time_not_waving++;
+		if (time_not_waving > 5)
+			no_wave();
+	}, interval_delay);
+
+	function no_wave() {
+		if (i > 1 && tutorial_on)
+		{
+			tutorial_on = false;
+			i = 0;
+			level = 1;
+			set = 1;
+			wave();
+			wait_noise.play();
+		}
+		if (!tutorial_on)
+		{
+			i = 0;
+			set = 0;
+			$("h1").text(levels[set][i % levels[set].length]);	
+		}
+	}
+
+	function wave() {
+		if (tutorial_on)
+			$("h1").text(tutorial[i % tutorial.length]);
+		if (level == 1)
+			$("h1").text(questions[i % questions.length]);
+		wave_noise.play();
+		time_not_waving = 0;
+		i++;	
+	}
+
+	$(document).ready(function(){
+		$("body").keypress(function(){
+			wave();	
+		});
 	});
-});
-</script>
+	</script>
 </html>
-
